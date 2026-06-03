@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estrategia de Modernización Enoturística · Castilla-La Mancha</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+<style>
+  :root {
+    --bg: #faf8f3;
+    --surface: #ffffff;
+    --surface-2: #f3f0e8;
+    --text: #1a1a1a;
+    --text-2: #5f5e5a;
+    --text-3: #888780;
+    --border: rgba(0,0,0,0.1);
+    --border-strong: rgba(0,0,0,0.18);
+    --accent: #6b1f2e;
+    --accent-soft: #f4ece9;
+    --accent-text: #4a1b0c;
+    --gold: #b8860b;
+    --gold-soft: #faeeda;
+    --gold-text: #633806;
+    --green: #3b6d11;
+    --green-soft: #eaf3de;
+    --green-text: #173404;
+    --blue: #185fa5;
+    --blue-soft: #e6f1fb;
+    --blue-text: #042c53;
+    --purple: #534ab7;
+    --purple-soft: #eeedfe;
+    --purple-text: #26215c;
+    --radius: 10px;
+    --radius-lg: 14px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1714;
+      --surface: #25201c;
+      --surface-2: #2e2925;
+      --text: #f5f2ec;
+      --text-2: #b4b2a9;
+      --text-3: #888780;
+      --border: rgba(255,255,255,0.08);
+      --border-strong: rgba(255,255,255,0.15);
+      --accent: #d85a30;
+      --accent-soft: #3a2520;
+      --accent-text: #f0997b;
+      --gold-soft: #3a2e1a;
+      --gold-text: #fac775;
+      --green-soft: #1f2d15;
+      --green-text: #c0dd97;
+      --blue-soft: #142838;
+      --blue-text: #b5d4f4;
+      --purple-soft: #1f1d3a;
+      --purple-text: #cecbf6;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  /* Header */
+  .hero {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-eyebrow {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .hero-title {
+    font-size: clamp(28px, 4vw, 38px);
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+  .hero-sub {
+    font-size: 16px;
+    color: var(--text-2);
+    max-width: 720px;
+  }
+
+  /* KPI grid */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 14px;
+    margin-bottom: 3rem;
+  }
+  .kpi {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+  }
+  .kpi-icon {
+    color: var(--accent);
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  .kpi-label {
+    font-size: 12px;
+    color: var(--text-2);
+    margin-bottom: 4px;
+  }
+  .kpi-val {
+    font-size: 26px;
+    font-weight: 500;
+  }
+
+  /* Sections */
+  .section {
+    margin-bottom: 3rem;
+  }
+  .section-title {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title i { color: var(--accent); font-size: 22px; }
+  .section-sub {
+    font-size: 14px;
+    color: var(--text-2);
+    margin-bottom: 1.25rem;
+  }
+
+  /* Route tabs */
+  .route-tabs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    margin-bottom: 1.25rem;
+  }
+  .route-tab {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.18s ease;
+    font-family: inherit;
+    color: var(--text);
+  }
+  .route-tab:hover {
+    background: var(--surface-2);
+    border-color: var(--border-strong);
+  }
+  .route-tab.active {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+  .route-tab.active .route-tab-name { color: var(--accent-text); }
+  .route-tab-name {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .route-tab-tag {
+    font-size: 12px;
+    color: var(--text-2);
+  }
+
+  .route-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    box-shadow: var(--shadow);
+  }
+  .route-headline {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .route-pitch {
+    font-size: 14px;
+    color: var(--text-2);
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+  }
+  .prop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  .prop-card {
+    background: var(--surface-2);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    transition: transform 0.15s ease;
+  }
+  .prop-card:hover { transform: translateY(-2px); }
+  .prop-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .prop-icon {
+    font-size: 20px;
+    color: var(--accent);
+  }
+  .prop-title {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .prop-desc {
+    font-size: 13px;
+    color: var(--text-2);
+    line-height: 1.5;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+  }
+  .tag-mice { background: var(--purple-soft); color: var(--purple-text); }
+  .tag-young { background: var(--gold-soft); color: var(--gold-text); }
+  .tag-intl { background: var(--blue-soft); color: var(--blue-text); }
+  .tag-family { background: var(--green-soft); color: var(--green-text); }
+
+  /* Pillars */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  .pillar {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .pillar::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--accent);
+    opacity: 0;
+    transition: opacity 0.18s ease;
+  }
+  .pillar:hover { background: var(--surface-2); }
+  .pillar:hover::before { opacity: 1; }
+  .pillar.expanded::before { opacity: 1; }
+  .pillar.expanded { background: var(--surface-2); }
+  .pillar-num {
+    font-size: 11px;
+    color: var(--text-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+  .pillar-name {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .pillar-name i { color: var(--accent); }
+  .pillar-desc {
+    font-size: 13px;
+    color: var(--text-2);
+    line-height: 1.5;
+  }
+  .pillar-detail {
+    display: none;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--text-2);
+    line-height: 1.6;
+  }
+  .pillar.expanded .pillar-detail { display: block; }
+
+  /* Barriers */
+  .barriers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .barrier {
+    display: grid;
+    grid-template-columns: 1fr 32px 1fr;
+    gap: 12px;
+    align-items: center;
+  }
+  .barrier-prob, .barrier-sol {
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .barrier-prob {
+    background: #fcebeb;
+    color: #791f1f;
+  }
+  .barrier-sol {
+    background: #e1f5ee;
+    color: #085041;
+  }
+  @media (prefers-color-scheme: dark) {
+    .barrier-prob { background: #3a1a1a; color: #f7c1c1; }
+    .barrier-sol { background: #15302a; color: #9fe1cb; }
+  }
+  .barrier-arrow {
+    text-align: center;
+    color: var(--text-3);
+    font-size: 18px;
+  }
+  .barrier-prob strong, .barrier-sol strong {
+    display: block;
+    margin-bottom: 2px;
+    font-weight: 500;
+  }
+
+  /* Matrix table */
+  .matrix-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .matrix {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .matrix th {
+    text-align: left;
+    padding: 12px 16px;
+    background: var(--surface-2);
+    font-weight: 500;
+    font-size: 12px;
+    color: var(--text-2);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .matrix td {
+    padding: 12px 16px;
+    border-top: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .matrix .old { color: var(--text-2); }
+  .matrix .new { font-weight: 500; }
+
+  /* Roadmap */
+  .roadmap {
+    position: relative;
+    padding-left: 28px;
+  }
+  .roadmap::before {
+    content: '';
+    position: absolute;
+    left: 9px;
+    top: 12px;
+    bottom: 12px;
+    width: 2px;
+    background: var(--border-strong);
+  }
+  .phase {
+    position: relative;
+    padding: 12px 0 12px 20px;
+  }
+  .phase::before {
+    content: '';
+    position: absolute;
+    left: -23px;
+    top: 16px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+  }
+  .phase-name {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .phase-desc {
+    font-size: 13px;
+    color: var(--text-2);
+    line-height: 1.5;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-3);
+    text-align: center;
+  }
+
+  /* Print */
+  @media print {
+    body { background: white; color: black; }
+    .route-tab { display: none; }
+    .route-tab.active { display: block; }
+    .pillar-detail { display: block !important; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="hero">
+    <div class="hero-eyebrow">Informe interactivo · Enoturismo</div>
+    <h1 class="hero-title">De la visita técnica a la experiencia inmersiva</h1>
+    <p class="hero-sub">Estrategia de modernización enoturística aplicada a cuatro rutas de Castilla-La Mancha: Almagro, Valdepeñas, Cabañeros y Montes de Toledo, Tomelloso y Campo de Criptana.</p>
+  </header>
+
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="kpi-icon"><i class="ti ti-map-pin"></i></div>
+      <div class="kpi-label">Rutas analizadas</div>
+      <div class="kpi-val">4</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-icon"><i class="ti ti-stack-2"></i></div>
+      <div class="kpi-label">Pilares estratégicos</div>
+      <div class="kpi-val">4</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-icon"><i class="ti ti-users"></i></div>
+      <div class="kpi-label">Segmentos diana</div>
+      <div class="kpi-val">4</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-icon"><i class="ti ti-alert-triangle"></i></div>
+      <div class="kpi-label">Barreras detectadas</div>
+      <div class="kpi-val">4</div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2 class="section-title"><i class="ti ti-map-pin"></i>Explora las cuatro rutas</h2>
+    <p class="section-sub">Selecciona una ruta para ver su propuesta de valor y las iniciativas de emprendimiento asociadas.</p>
+    <div class="route-tabs" id="routeTabs">
+      <button class="route-tab active" data-route="almagro">
+        <div class="route-tab-name"><i class="ti ti-theater"></i>Almagro</div>
+        <div class="route-tab-tag">Patrimonio teatral</div>
+      </button>
+      <button class="route-tab" data-route="valdepenas">
+        <div class="route-tab-name"><i class="ti ti-glass-full"></i>Valdepeñas</div>
+        <div class="route-tab-tag">Vino y arqueología</div>
+      </button>
+      <button class="route-tab" data-route="cabaneros">
+        <div class="route-tab-name"><i class="ti ti-trees"></i>Cabañeros</div>
+        <div class="route-tab-tag">Naturaleza y montes</div>
+      </button>
+      <button class="route-tab" data-route="tomelloso">
+        <div class="route-tab-name"><i class="ti ti-windmill"></i>Tomelloso</div>
+        <div class="route-tab-tag">Mancha quijotesca</div>
+      </button>
+    </div>
+    <div class="route-panel" id="routePanel"></div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title"><i class="ti ti-stack-2"></i>Los cuatro pilares estratégicos</h2>
+    <p class="section-sub">Haz clic en cada pilar para desplegar su desarrollo detallado.</p>
+    <div class="pillars" id="pillarsGrid">
+      <div class="pillar" data-pillar="diagnostico">
+        <div class="pillar-num">Pilar 01</div>
+        <div class="pillar-name"><i class="ti ti-stethoscope"></i>Diagnóstico</div>
+        <div class="pillar-desc">Identificar las barreras de engagement del modelo actual.</div>
+        <div class="pillar-detail">El modelo de comunicación actual es excesivamente técnico, con introducciones teóricas desconectadas del recorrido físico. Esta disonancia cognitiva, sumada a la densidad de información, genera fatiga inmediata y pérdida de impacto emocional. Se identifican cuatro barreras: disonancia narrativa, saturación técnica, inactividad sistémica y obsolescencia del formato frente al público joven e internacional.</div>
+      </div>
+      <div class="pillar" data-pillar="tecnologia">
+        <div class="pillar-num">Pilar 02</div>
+        <div class="pillar-name"><i class="ti ti-3d-cube-sphere"></i>Tecnología y RA</div>
+        <div class="pillar-desc">Dotar de visibilidad a los activos intangibles del destino.</div>
+        <div class="pillar-detail">La tecnología debe ser herramienta estratégica, no aditivo estético. Capa digital sobre procesos ocultos (micro-oxigenación, vida en el yacimiento), siguiendo el modelo de las Cuevas de Nerja. Incluye digitalización del terroir con drones y vídeo 360°, sistemas de guiado inteligente con segmentación psicográfica, y realidad aumentada vía QR para recreaciones históricas.</div>
+      </div>
+      <div class="pillar" data-pillar="gamificacion">
+        <div class="pillar-num">Pilar 03</div>
+        <div class="pillar-name"><i class="ti ti-trophy"></i>Gamificación MICE</div>
+        <div class="pillar-desc">Teambuilding y experiencias activas para el segmento B2B.</div>
+        <div class="pillar-detail">Agencia de eventos boutique especializada en "Conquista del Yacimiento": competición estratégica con retos de logística, recursos y cultura enológica basados en la historia real del sitio. Orientada a departamentos de RR.HH. y agencias internacionales. Incluye enoturismo participativo, desafíos de estrategia histórica y social media hubs.</div>
+      </div>
+      <div class="pillar" data-pillar="fidelizacion">
+        <div class="pillar-num">Pilar 04</div>
+        <div class="pillar-name"><i class="ti ti-heart-handshake"></i>Fidelización digital</div>
+        <div class="pillar-desc">Maximizar el Customer Lifetime Value post-visita.</div>
+        <div class="pillar-detail">Plataforma centralizada con reserva integrada de bodegas, experiencias y restaurantes locales (cross-selling regional). Continuidad narrativa con vídeos sobre evolución de cosechas y excavaciones. Club de fidelización por QR, marketing de contenidos evolutivo, marketplace de catas virtuales y gamificación post-visita que premia la recomendación y recurrencia.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title"><i class="ti ti-arrows-exchange"></i>Del problema a la solución</h2>
+    <p class="section-sub">Las cuatro barreras de engagement detectadas y sus respuestas tecnológicas.</p>
+    <div class="barriers-list">
+      <div class="barrier">
+        <div class="barrier-prob"><strong>Disonancia narrativa</strong>Discurso desconectado de lo que el visitante observa.</div>
+        <div class="barrier-arrow"><i class="ti ti-arrow-right"></i></div>
+        <div class="barrier-sol"><strong>Cápsulas inmersivas de RA</strong>Alinean el relato con la visualización física in situ.</div>
+      </div>
+      <div class="barrier">
+        <div class="barrier-prob"><strong>Saturación técnica</strong>Charlas densas, aptas solo para expertos.</div>
+        <div class="barrier-arrow"><i class="ti ti-arrow-right"></i></div>
+        <div class="barrier-sol"><strong>Guiado inteligente</strong>Segmentación por perfil principiante o experto.</div>
+      </div>
+      <div class="barrier">
+        <div class="barrier-prob"><strong>Inactividad sistémica</strong>Dinámicas pasivas de mirar y escuchar.</div>
+        <div class="barrier-arrow"><i class="ti ti-arrow-right"></i></div>
+        <div class="barrier-sol"><strong>Participación activa</strong>Juegos sensoriales y retos de aromas competitivos.</div>
+      </div>
+      <div class="barrier">
+        <div class="barrier-prob"><strong>Obsolescencia del formato</strong>Sin adaptación a códigos del público joven.</div>
+        <div class="barrier-arrow"><i class="ti ti-arrow-right"></i></div>
+        <div class="barrier-sol"><strong>Social media hubs</strong>Espacios diseñados para contenido orgánico.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title"><i class="ti ti-replace"></i>Matriz de modernización de activos</h2>
+    <p class="section-sub">Transformación de los recursos tradicionales en experiencias tecnológicas.</p>
+    <div class="matrix-wrap">
+      <table class="matrix">
+        <thead>
+          <tr><th style="width:45%">Recurso tradicional</th><th>Mejora tecnológica propuesta</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="old">Explicación técnica del sumiller</td><td class="new">Sistemas de guiado inteligente con segmentación psicográfica</td></tr>
+          <tr><td class="old">Paneles informativos estáticos</td><td class="new">Interfaces interactivas con mapas de calor y evolución histórica</td></tr>
+          <tr><td class="old">Charla teórica de bienvenida</td><td class="new">Cápsulas inmersivas de RA alineadas con el recorrido físico</td></tr>
+          <tr><td class="old">Observación de barricas</td><td class="new">Realidad aumentada vía QR con recreación digital del proceso</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title"><i class="ti ti-route"></i>Hoja de ruta de implementación</h2>
+    <p class="section-sub">Las cuatro fases secuenciales para activar la estrategia.</p>
+    <div class="roadmap">
+      <div class="phase">
+        <div class="phase-name">Fase 1 · Reingeniería de contenidos</div>
+        <div class="phase-desc">Reestructurar el discurso para asegurar coherencia narrativa y segmentación por perfiles (B2B, joven, internacional).</div>
+      </div>
+      <div class="phase">
+        <div class="phase-name">Fase 2 · Despliegue tecnológico in situ</div>
+        <div class="phase-desc">Instalación de la infraestructura de RA, digitalización del terroir y sistemas de guiado inteligente.</div>
+      </div>
+      <div class="phase">
+        <div class="phase-name">Fase 3 · Activación del ecosistema MICE</div>
+        <div class="phase-desc">Lanzamiento de la agencia boutique y captación de departamentos de RR.HH. para teambuilding.</div>
+      </div>
+      <div class="phase">
+        <div class="phase-name">Fase 4 · Lanzamiento de la app del destino</div>
+        <div class="phase-desc">Integración de fidelización, reservas de restauración y cross-selling regional.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    Informe basado en la Estrategia de Modernización Enoturística · Propuestas de emprendimiento de alumnos · Castilla-La Mancha
+  </footer>
+
+</div>
+
+<script>
+const routes = {
+  almagro: {
+    headline: "Almagro: el escenario que se vive",
+    pitch: "La capital del teatro clásico convertida en un destino donde el patrimonio escénico, el encaje de bolillos y el vino se experimentan en clave inmersiva y participativa.",
+    proposals: [
+      { icon: "ti-masks-theater", title: "RA en el Corral de Comedias", desc: "Reconstrucción digital de funciones del Siglo de Oro superpuestas al escenario real." },
+      { icon: "ti-wine", title: "Catas escenificadas", desc: "Maridajes guiados por actores con personajes del teatro clásico español." },
+      { icon: "ti-needle", title: "Taller de encaje y vino", desc: "Experiencia artesanal participativa que vincula oficio tradicional y bodega." },
+      { icon: "ti-camera", title: "Hub instagrameable", desc: "Plaza Mayor con puntos diseñados para contenido orgánico del visitante." }
+    ],
+    segments: ["intl", "young"]
+  },
+  valdepenas: {
+    headline: "Valdepeñas: vino milenario, relato contemporáneo",
+    pitch: "El Cerro de las Cabezas y las bodegas operan bajo un modelo demasiado técnico. La propuesta articula RA, terroir digital y app de fidelización para reposicionar el destino.",
+    proposals: [
+      { icon: "ti-qrcode", title: "RA en barricas y yacimiento", desc: "Recreación digital de la elaboración hace 2.500 años activada por código QR." },
+      { icon: "ti-drone", title: "Digitalización del terroir", desc: "Vídeos 360° y drones sobre viñedos sin necesidad de desplazamiento físico." },
+      { icon: "ti-device-mobile", title: "App Valdepeñas Wine Experience", desc: "Reserva integrada de bodegas, restauración y club de fidelización por QR." },
+      { icon: "ti-trophy", title: "Conquista del Yacimiento", desc: "Agencia boutique de teambuilding basada en retos de estrategia histórica." }
+    ],
+    segments: ["mice", "young", "intl"]
+  },
+  cabaneros: {
+    headline: "Cabañeros y Montes de Toledo: el Serengueti ibérico",
+    pitch: "Naturaleza protegida y pequeñas bodegas de montes convertidas en un ecosistema slow travel, donde tecnología y sostenibilidad refuerzan la diferenciación frente al turismo masivo.",
+    proposals: [
+      { icon: "ti-binoculars", title: "Safari sensorial con RA", desc: "Capa digital sobre fauna y flora durante el recorrido en 4x4 por la raña." },
+      { icon: "ti-tent", title: "Glamping enológico", desc: "Alojamiento experiencial con cata privada bajo cielo Starlight certificado." },
+      { icon: "ti-leaf", title: "Ruta del vino ecológico", desc: "Bodegas familiares de los Montes con storytelling sobre biodiversidad." },
+      { icon: "ti-users-group", title: "Retiros corporativos MICE", desc: "Programas de desconexión y liderazgo para directivos en entorno natural." }
+    ],
+    segments: ["mice", "family", "intl"]
+  },
+  tomelloso: {
+    headline: "Tomelloso y Campo de Criptana: la Mancha quijotesca",
+    pitch: "La ruta más cinematográfica: molinos, cuevas-bodega y el imaginario del Quijote como activos infrautilizados que la gamificación y la app de destino pueden activar comercialmente.",
+    proposals: [
+      { icon: "ti-windmill", title: "Quest del Quijote", desc: "Gincana digital geolocalizada por molinos con retos enológicos y narrativos." },
+      { icon: "ti-stairs-down", title: "Cuevas-bodega inmersivas", desc: "Proyecciones dinámicas en bóvedas subterráneas sobre el ciclo del vino." },
+      { icon: "ti-movie", title: "Set de cine al aire libre", desc: "Hub instagrameable temático cervantino para creadores de contenido." },
+      { icon: "ti-tools-kitchen-2", title: "Cross-selling gastronómico", desc: "App integrada con restaurantes locales: pisto, gachas y maridajes manchegos." }
+    ],
+    segments: ["young", "intl", "family"]
+  }
+};
+
+const segmentLabels = {
+  mice: { label: "MICE / B2B", cls: "tag-mice" },
+  young: { label: "Joven 20-40", cls: "tag-young" },
+  intl: { label: "Internacional", cls: "tag-intl" },
+  family: { label: "Familiar", cls: "tag-family" }
+};
+
+function renderRoute(key) {
+  const r = routes[key];
+  const segTags = r.segments.map(s => `<span class="tag ${segmentLabels[s].cls}">${segmentLabels[s].label}</span>`).join('');
+  const props = r.proposals.map(p => `
+    <div class="prop-card">
+      <div class="prop-head">
+        <i class="ti ${p.icon} prop-icon"></i>
+        <div class="prop-title">${p.title}</div>
+      </div>
+      <div class="prop-desc">${p.desc}</div>
+    </div>
+  `).join('');
+  document.getElementById('routePanel').innerHTML = `
+    <div class="route-headline">${r.headline} ${segTags}</div>
+    <div class="route-pitch">${r.pitch}</div>
+    <div class="prop-grid">${props}</div>
+  `;
+}
+
+document.querySelectorAll('.route-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.route-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderRoute(btn.dataset.route);
+  });
+});
+
+document.querySelectorAll('.pillar').forEach(p => {
+  p.addEventListener('click', () => {
+    p.classList.toggle('expanded');
+  });
+});
+
+renderRoute('almagro');
+</script>
+</body>
+</html>
